@@ -1,4 +1,5 @@
 import mechanicalsoup
+from bs4 import BeautifulSoup
 
 URL = "http://icps0517.recife.pe.gov.br/node/add/pesquisa-origem-destino-2016"
 
@@ -42,5 +43,7 @@ browser["field_od16_fez_compra_domestica_[und]"] = "2"
 browser["field_od16_vc_procurou_servicos[und]"] = "2"
 resp = browser.submit_selected()
 print(browser.get_url())
-print(resp.text)
+soup = BeautifulSoup(resp.text, 'html.parser')
+protocolo = soup.em.string
+print(protocolo)
 
