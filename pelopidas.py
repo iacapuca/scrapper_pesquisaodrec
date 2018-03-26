@@ -4,10 +4,11 @@ from bs4 import BeautifulSoup
 from pymongo import MongoClient
 import pprint
 import json
+import config
 
 
 
-client = MongoClient("mongodb+srv://iacapuca:171994@ameciclo-x1yu8.mongodb.net")
+client = MongoClient(mongoURL)
 db = client.ameciclo
 pesquisa = db.pesquisa_od
 res = pesquisa.find_one()
@@ -261,8 +262,6 @@ payload = {
     'additional_settings__active_tab': '',
     'op':'Enviar', 
 }
-
-URL = "http://icps0517.recife.pe.gov.br/node/add/pesquisa-origem-destino-2016"
 
 #r = requests.post(URL, data=payload)
 #print = (r.history)
